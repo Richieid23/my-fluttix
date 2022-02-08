@@ -17,21 +17,38 @@ class MyApp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               RaisedButton(
-                  child: Text('Sign Up'),
-                  onPressed: () async {
-                    SignInSignUpResult result = await AuthServices.signUp(
-                        'lisa@blackpink.com',
-                        '12345678',
-                        'Lalisa',
-                        ['Action', 'Horror', 'Music', 'Drama'],
-                        'Korean');
+                child: Text('Sign Up'),
+                onPressed: () async {
+                  SignInSignUpResult result = await AuthServices.signUp(
+                    'lisa@blackpink.com',
+                    '12345678',
+                    'Lalisa',
+                    ['Action', 'Horror', 'Music', 'Drama'],
+                    'Korean',
+                  );
 
-                    if (result.user == null) {
-                      print(result.message);
-                    } else {
-                      print(result.user.toString());
-                    }
-                  })
+                  if (result.user == null) {
+                    print(result.message);
+                  } else {
+                    print(result.user.toString());
+                  }
+                },
+              ),
+              RaisedButton(
+                child: Text('Sign In'),
+                onPressed: () async {
+                  SignInSignUpResult result = await AuthServices.signIn(
+                    'lisa@blackpink.com',
+                    '1234567',
+                  );
+
+                  if (result.user == null) {
+                    print(result.message);
+                  } else {
+                    print(result.user.toString());
+                  }
+                },
+              )
             ],
           ),
         ),
