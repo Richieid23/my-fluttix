@@ -31,10 +31,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
   firebase_auth: ^0.15.5+3
-  provider: ^4.0.4
-  flutter_bloc: ^3.2.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^3.2.0
+  google_fonts: ^0.3.10
+  provider: ^4.0.4
 
 dev_dependencies:
   flutter_lints: ^1.0.0
