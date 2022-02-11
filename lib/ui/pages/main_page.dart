@@ -37,10 +37,8 @@ class _MainPageState extends State<MainPage> {
               bottomNavBarIndex = index;
             });
           },
-          children: [
-            Center(
-              child: Text('New Movie'),
-            ),
+          children: const [
+            MoviePage(),
             Center(
               child: Text('My Tickets'),
             ),
@@ -62,7 +60,9 @@ class _MainPageState extends State<MainPage> {
                 child: Icon(MdiIcons.walletPlus,
                     color: Colors.black.withOpacity(0.45)),
               ),
-              onPressed: () {},
+              onPressed: () {
+                context.bloc<UserBloc>().add(SignOut());
+              },
             ),
           ),
         ),
