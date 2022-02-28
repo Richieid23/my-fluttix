@@ -13,6 +13,7 @@ import 'package:my_fluttix/bloc/blocs.dart';
 import 'package:my_fluttix/models/models.dart';
 import 'package:my_fluttix/services/services.dart';
 import 'package:my_fluttix/shared/shared.dart';
+import 'package:my_fluttix/ui/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,8 +25,3 @@ part 'movie_page.dart';
 part 'sign_up_page.dart';
 part 'preference_page.dart';
 part 'account_confirmation_page.dart';
-
-Future<File> getImage() async {
-  File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-  return image;
-}
