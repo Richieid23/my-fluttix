@@ -11,22 +11,32 @@ class MoviePage extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             color: accentColor1,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
             ),
           ),
-          padding: EdgeInsets.fromLTRB(defaultMargin, 20, defaultMargin, 30),
+          padding:
+              const EdgeInsets.fromLTRB(defaultMargin, 20, defaultMargin, 30),
           child: BlocBuilder<UserBloc, UserState>(
             builder: (context, userState) {
               if (userState is UserLoaded) {
+                if (imageFileToUpload != null) {
+                  uploadImage(imageFileToUpload).then((downloadUrl) {
+                    imageFileToUpload = null;
+                    context
+                        .bloc<UserBloc>()
+                        .add(UpdateData(profilePicture: downloadUrl));
+                  });
+                }
                 return Row(
                   children: [
                     Container(
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        border: Border.all(color: Color(0xff5f5588), width: 1),
+                        border: Border.all(
+                            color: const Color(0xff5f5588), width: 1),
                       ),
                       child: Stack(
                         children: [
