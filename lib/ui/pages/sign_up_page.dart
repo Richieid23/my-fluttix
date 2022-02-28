@@ -149,6 +149,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   TextField(
                     controller: passwordController,
+                    obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -162,6 +163,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   TextField(
                     controller: retypePasswordController,
+                    obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -217,6 +219,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         widget.registrationData.email = emailController.text;
                         widget.registrationData.password =
                             passwordController.text;
+
+                        context
+                            .bloc<PageBloc>()
+                            .add(GoTOPreferencePage(widget.registrationData));
                       }
                     },
                   ),
