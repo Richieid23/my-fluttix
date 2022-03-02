@@ -37,6 +37,10 @@ class Wrapper extends StatelessWidget {
           return AccountConfirmationPage(
             registrationData: pageState.registrationData,
           );
+        } else if (pageState is OnMovieDetailPage) {
+          return MovieDetailPage(
+            movie: pageState.movie,
+          );
         } else {
           return const MainPage();
         }
