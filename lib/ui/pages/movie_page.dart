@@ -7,7 +7,7 @@ class MoviePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        // Note: HEADER
+        // Note: Header
         Container(
           decoration: BoxDecoration(
             color: accentColor1,
@@ -98,6 +98,135 @@ class MoviePage extends StatelessWidget {
             },
           ),
         ),
+
+        // Note: Now Playing
+        Container(
+          margin:
+              const EdgeInsets.fromLTRB(defaultMargin, 30, defaultMargin, 12),
+          child: Text('Now Playing',
+              style: blackTextFont.copyWith(
+                  fontSize: 18, fontWeight: FontWeight.bold)),
+        ),
+        SizedBox(
+          height: 140,
+          child: BlocBuilder<MovieBloc, MovieState>(
+            builder: (context, movieState) {
+              if (movieState is MovieLoaded) {
+                List<Movie> movies = movieState.movies.sublist(0, 10);
+
+                return ListView.builder(
+                  itemBuilder: (context, index) => Container(
+                    margin: EdgeInsets.only(
+                        left: (index == 0) ? defaultMargin : 0,
+                        right:
+                            (index == movies.length - 1) ? defaultMargin : 16),
+                    child: MovieCard(movie: movies[index]),
+                  ),
+                  itemCount: movies.length,
+                  scrollDirection: Axis.horizontal,
+                );
+              } else {
+                return SpinKitFadingCircle(
+                  color: mainColor,
+                  size: 50,
+                );
+              }
+            },
+          ),
+        ),
+
+        // Note: Browse Movie
+        Container(
+          margin:
+              const EdgeInsets.fromLTRB(defaultMargin, 30, defaultMargin, 12),
+          child: Text(
+            'Browse Movie',
+            style: blackTextFont.copyWith(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        BlocBuilder<UserBloc, UserState>(
+          builder: (context, userState) {
+            if (userState is UserLoaded) {
+              return Container(
+                margin: const EdgeInsets.symmetric(horizontal: defaultMargin),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: List.generate(
+                    userState.user.selectedGenres.length,
+                    (index) => BrowseButton(
+                      userState.user.selectedGenres[index],
+                    ),
+                  ),
+                ),
+              );
+            } else {
+              return SpinKitFadingCircle(
+                color: mainColor,
+                size: 50,
+              );
+            }
+          },
+        ),
+
+        // Note: Coming Soon
+        Container(
+          margin:
+              const EdgeInsets.fromLTRB(defaultMargin, 30, defaultMargin, 12),
+          child: Text('Coming Soon',
+              style: blackTextFont.copyWith(
+                  fontSize: 18, fontWeight: FontWeight.bold)),
+        ),
+        SizedBox(
+          height: 140,
+          child: BlocBuilder<MovieBloc, MovieState>(
+            builder: (context, movieState) {
+              if (movieState is MovieLoaded) {
+                List<Movie> movies = movieState.movies.sublist(10);
+
+                return ListView.builder(
+                  itemBuilder: (context, index) => Container(
+                    margin: EdgeInsets.only(
+                        left: (index == 0) ? defaultMargin : 0,
+                        right:
+                            (index == movies.length - 1) ? defaultMargin : 16),
+                    child: ComingSoonCard(movies[index]),
+                  ),
+                  itemCount: movies.length,
+                  scrollDirection: Axis.horizontal,
+                );
+              } else {
+                return SpinKitFadingCircle(
+                  color: mainColor,
+                  size: 50,
+                );
+              }
+            },
+          ),
+        ),
+
+        // Note: Get Lucky Day
+        Container(
+          margin:
+              const EdgeInsets.fromLTRB(defaultMargin, 30, defaultMargin, 12),
+          child: Text('Get Lucky Day',
+              style: blackTextFont.copyWith(
+                  fontSize: 18, fontWeight: FontWeight.bold)),
+        ),
+        Column(
+          children: dummyPromo
+              .map(
+                (e) => Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                      defaultMargin, 0, defaultMargin, 16),
+                  child: PromoCard(promo: e),
+                ),
+              )
+              .toList(),
+        ),
+        const SizedBox(height: 100),
       ],
     );
   }
