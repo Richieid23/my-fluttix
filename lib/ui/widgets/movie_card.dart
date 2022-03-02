@@ -9,45 +9,52 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 140,
-      width: 210,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        image: DecorationImage(
-          image: NetworkImage(imageBaseUrl + 'w780' + movie.backdropPath),
-          fit: BoxFit.cover,
-        ),
-      ),
+    return GestureDetector(
+      onTap: () {
+        if (onTap != null) {
+          onTap();
+        }
+      },
       child: Container(
         height: 140,
         width: 210,
-        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          gradient: LinearGradient(
-            colors: [
-              Colors.black.withOpacity(0.61),
-              Colors.black.withOpacity(0.0)
-            ],
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
+          image: DecorationImage(
+            image: NetworkImage(imageBaseUrl + 'w780' + movie.backdropPath),
+            fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              movie.title,
-              style: whiteTextFont,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+        child: Container(
+          height: 140,
+          width: 210,
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            gradient: LinearGradient(
+              colors: [
+                Colors.black.withOpacity(0.61),
+                Colors.black.withOpacity(0.0)
+              ],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
             ),
-            RatingStars(
-              voteAverage: movie.voteAverage,
-            ),
-          ],
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                movie.title,
+                style: whiteTextFont,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              RatingStars(
+                voteAverage: movie.voteAverage,
+              ),
+            ],
+          ),
         ),
       ),
     );
