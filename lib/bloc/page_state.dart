@@ -18,17 +18,23 @@ class OnMainPage extends PageState {}
 class OnRegistrationPage extends PageState {
   final RegistrationData registrationData;
 
-  OnRegistrationPage(this.registrationData);
+  const OnRegistrationPage(this.registrationData);
 }
 
 class OnPreferencePage extends PageState {
   final RegistrationData registrationData;
 
-  OnPreferencePage(this.registrationData);
+  const OnPreferencePage(this.registrationData);
 }
 
 class OnAccountConfirmationPage extends PageState {
   final RegistrationData registrationData;
 
-  OnAccountConfirmationPage(this.registrationData);
+  const OnAccountConfirmationPage(this.registrationData);
+}
+
+class OnMovieDetailPage extends PageState {
+  final Movie movie;
+
+  const OnMovieDetailPage(this.movie);
 }

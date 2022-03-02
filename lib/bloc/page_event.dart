@@ -16,17 +16,23 @@ class GoToMainPage extends PageEvent {}
 class GoToRegistrationPage extends PageEvent {
   final RegistrationData registrationData;
 
-  GoToRegistrationPage(this.registrationData);
+  const GoToRegistrationPage(this.registrationData);
 }
 
 class GoTOPreferencePage extends PageEvent {
   final RegistrationData registrationData;
 
-  GoTOPreferencePage(this.registrationData);
+  const GoTOPreferencePage(this.registrationData);
 }
 
 class GoToAccountConfirmationPage extends PageEvent {
   final RegistrationData registrationData;
 
-  GoToAccountConfirmationPage(this.registrationData);
+  const GoToAccountConfirmationPage(this.registrationData);
+}
+
+class GoToMovieDetailPage extends PageEvent {
+  final Movie movie;
+
+  const GoToMovieDetailPage(this.movie);
 }
