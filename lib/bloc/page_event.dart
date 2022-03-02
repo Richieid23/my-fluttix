@@ -36,3 +36,9 @@ class GoToMovieDetailPage extends PageEvent {
 
   const GoToMovieDetailPage(this.movie);
 }
+
+class GoToSelectSchedulePage extends PageEvent {
+  final MovieDetail movieDetail;
+
+  const GoToSelectSchedulePage(this.movieDetail);
+}

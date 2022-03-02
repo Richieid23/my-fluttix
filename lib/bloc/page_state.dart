@@ -38,3 +38,9 @@ class OnMovieDetailPage extends PageState {
 
   const OnMovieDetailPage(this.movie);
 }
+
+class OnSelectSchedulePage extends PageState {
+  final MovieDetail movieDetail;
+
+  const OnSelectSchedulePage(this.movieDetail);
+}
