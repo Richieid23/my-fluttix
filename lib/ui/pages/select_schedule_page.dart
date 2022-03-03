@@ -109,16 +109,40 @@ class _SelectSchedulePageState extends State<SelectSchedulePage> {
                 ),
                 Align(
                   alignment: Alignment.topCenter,
-                  child: FloatingActionButton(
-                    elevation: 0,
-                    backgroundColor:
-                        isValid ? mainColor : const Color(0xffe4e4e4),
-                    child: Icon(
-                      Icons.arrow_forward,
-                      color: isValid ? Colors.white : const Color(0xffbebebe),
-                    ),
-                    onPressed: () {},
-                  ),
+                  child: BlocBuilder<UserBloc, UserState>(
+                      builder: (context, userState) {
+                    return FloatingActionButton(
+                      elevation: 0,
+                      backgroundColor:
+                          isValid ? mainColor : const Color(0xffe4e4e4),
+                      child: Icon(
+                        Icons.arrow_forward,
+                        color: isValid ? Colors.white : const Color(0xffbebebe),
+                      ),
+                      onPressed: () {
+                        if (isValid) {
+                          context.bloc<PageBloc>().add(
+                                GoToSelectSeatPage(
+                                  Ticket(
+                                    movieDetail: widget.movieDetail,
+                                    theater: selectedTheater,
+                                    time: DateTime(
+                                        selectedDate.year,
+                                        selectedDate.month,
+                                        selectedDate.day,
+                                        selectedTime),
+                                    bookingCode:
+                                        randomAlphaNumeric(12).toUpperCase(),
+                                    seats: null,
+                                    name: (userState as UserLoaded).user.name,
+                                    totalPrice: null,
+                                  ),
+                                ),
+                              );
+                        }
+                      },
+                    );
+                  }),
                 ),
               ],
             ),
