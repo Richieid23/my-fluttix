@@ -44,3 +44,9 @@ class OnSelectSchedulePage extends PageState {
 
   const OnSelectSchedulePage(this.movieDetail);
 }
+
+class OnSelectSeatPage extends PageState {
+  final Ticket ticket;
+
+  const OnSelectSeatPage(this.ticket);
+}

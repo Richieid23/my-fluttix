@@ -42,3 +42,9 @@ class GoToSelectSchedulePage extends PageEvent {
 
   const GoToSelectSchedulePage(this.movieDetail);
 }
+
+class GoToSelectSeatPage extends PageEvent {
+  final Ticket ticket;
+
+  const GoToSelectSeatPage(this.ticket);
+}

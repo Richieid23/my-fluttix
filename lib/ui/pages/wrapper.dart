@@ -45,6 +45,10 @@ class Wrapper extends StatelessWidget {
           return SelectSchedulePage(
             movieDetail: pageState.movieDetail,
           );
+        } else if (pageState is OnSelectSeatPage) {
+          return SelectSeatPage(
+            ticket: pageState.ticket,
+          );
         } else {
           return const MainPage();
         }
