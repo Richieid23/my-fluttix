@@ -21,3 +21,15 @@ class UpdateData extends UserEvent {
 
   const UpdateData({this.name, this.profilePicture});
 }
+
+class TopUp extends UserEvent {
+  final int amount;
+
+  const TopUp(this.amount);
+}
+
+class Purchase extends UserEvent {
+  final int amount;
+
+  const Purchase(this.amount);
+}
