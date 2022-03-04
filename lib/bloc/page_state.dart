@@ -50,3 +50,9 @@ class OnSelectSeatPage extends PageState {
 
   const OnSelectSeatPage(this.ticket);
 }
+
+class OnCheckoutPage extends PageState {
+  final Ticket ticket;
+
+  const OnCheckoutPage(this.ticket);
+}

@@ -48,3 +48,9 @@ class GoToSelectSeatPage extends PageEvent {
 
   const GoToSelectSeatPage(this.ticket);
 }
+
+class GoToCheckoutPage extends PageEvent {
+  final Ticket ticket;
+
+  const GoToCheckoutPage(this.ticket);
+}
