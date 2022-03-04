@@ -123,7 +123,13 @@ class _SelectSeatPageState extends State<SelectSeatPage> {
                               ? Colors.white
                               : const Color(0xffbebebe),
                         ),
-                        onPressed: () {},
+                        onPressed: selectedSeats.isNotEmpty
+                            ? () {
+                                context.bloc<PageBloc>().add(GoToCheckoutPage(
+                                    widget.ticket
+                                        .copyWith(seats: selectedSeats)));
+                              }
+                            : null,
                       ),
                     ),
                     const SizedBox(height: 50),
