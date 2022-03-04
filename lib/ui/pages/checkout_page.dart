@@ -393,7 +393,22 @@ class _CheckouPageState extends State<CheckouPage> {
                                 ),
                                 onPressed: () {
                                   if (user.balance >= total) {
-                                    // Uang cukup
+                                    FlutixTransaction transaction =
+                                        FlutixTransaction(
+                                      userId: user.id,
+                                      title: widget.ticket.movieDetail.title,
+                                      subtitle: widget.ticket.theater.name,
+                                      time: DateTime.now(),
+                                      amount: -total,
+                                      picture:
+                                          widget.ticket.movieDetail.posterPath,
+                                    );
+
+                                    context.bloc<PageBloc>().add(
+                                        GoToSuccessPage(
+                                            widget.ticket
+                                                .copyWith(totalPrice: total),
+                                            transaction));
                                   } else {
                                     // Uang tidak cukup
                                   }

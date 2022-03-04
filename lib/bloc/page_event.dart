@@ -54,3 +54,10 @@ class GoToCheckoutPage extends PageEvent {
 
   const GoToCheckoutPage(this.ticket);
 }
+
+class GoToSuccessPage extends PageEvent {
+  final Ticket ticket;
+  final FlutixTransaction transaction;
+
+  const GoToSuccessPage(this.ticket, this.transaction);
+}

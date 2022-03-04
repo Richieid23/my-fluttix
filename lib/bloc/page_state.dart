@@ -56,3 +56,10 @@ class OnCheckoutPage extends PageState {
 
   const OnCheckoutPage(this.ticket);
 }
+
+class OnSuccessPage extends PageState {
+  final Ticket ticket;
+  final FlutixTransaction transaction;
+
+  const OnSuccessPage(this.ticket, this.transaction);
+}
