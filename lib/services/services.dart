@@ -10,3 +10,4 @@ import 'package:my_fluttix/shared/shared.dart';
 part 'auth_services.dart';
 part 'user_sevices.dart';
 part 'movie_services.dart';
+part 'ticket_services.dart';
