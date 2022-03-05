@@ -67,3 +67,5 @@ class GoToTicketDetailPage extends PageEvent {
 
   const GoToTicketDetailPage(this.ticket);
 }
+
+class GoToProfilePage extends PageEvent {}

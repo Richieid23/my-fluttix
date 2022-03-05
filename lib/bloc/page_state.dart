@@ -69,3 +69,5 @@ class OnTicketDetailPage extends PageState {
 
   const OnTicketDetailPage(this.ticket);
 }
+
+class OnProfilePage extends PageState {}
