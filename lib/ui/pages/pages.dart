@@ -18,6 +18,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:random_string/random_string.dart';
 import 'package:my_fluttix/extensions/extensions.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 part 'splash_page.dart';
 part 'wrapper.dart';
@@ -34,3 +35,4 @@ part 'checkout_page.dart';
 part 'success_page.dart';
 part 'ticket_page.dart';
 part 'ticket_detail_page.dart';
+part 'profile_page.dart';
