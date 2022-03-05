@@ -61,3 +61,9 @@ class GoToSuccessPage extends PageEvent {
 
   const GoToSuccessPage(this.ticket, this.transaction);
 }
+
+class GoToTicketDetailPage extends PageEvent {
+  final Ticket ticket;
+
+  const GoToTicketDetailPage(this.ticket);
+}

@@ -63,3 +63,9 @@ class OnSuccessPage extends PageState {
 
   const OnSuccessPage(this.ticket, this.transaction);
 }
+
+class OnTicketDetailPage extends PageState {
+  final Ticket ticket;
+
+  const OnTicketDetailPage(this.ticket);
+}

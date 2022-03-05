@@ -160,62 +160,69 @@ class TicketViewer extends StatelessWidget {
 
     return ListView.builder(
       itemCount: sortedTickets.length,
-      itemBuilder: (context, index) => Container(
-        margin: EdgeInsets.only(top: (index == 0) ? 133 : 20),
-        child: Row(
-          children: [
-            Container(
-              width: 70,
-              height: 90,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                image: DecorationImage(
-                  image: NetworkImage(
-                    imageBaseUrl +
-                        'w500' +
-                        sortedTickets[index].movieDetail.posterPath,
+      itemBuilder: (context, index) => GestureDetector(
+        onTap: () {
+          context
+              .bloc<PageBloc>()
+              .add(GoToTicketDetailPage(sortedTickets[index]));
+        },
+        child: Container(
+          margin: EdgeInsets.only(top: (index == 0) ? 133 : 20),
+          child: Row(
+            children: [
+              Container(
+                width: 70,
+                height: 90,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      imageBaseUrl +
+                          'w500' +
+                          sortedTickets[index].movieDetail.posterPath,
+                    ),
+                    fit: BoxFit.cover,
                   ),
-                  fit: BoxFit.cover,
                 ),
               ),
-            ),
-            const SizedBox(
-              width: 16,
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width -
-                  2 * defaultMargin -
-                  70 -
-                  16,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    sortedTickets[index].movieDetail.title,
-                    style: blackTextFont.copyWith(fontSize: 18),
-                    maxLines: 2,
-                    overflow: TextOverflow.clip,
-                  ),
-                  const SizedBox(
-                    height: 6,
-                  ),
-                  Text(
-                    sortedTickets[index].movieDetail.genresAndLanguage,
-                    style: greyTextFont.copyWith(
-                        fontSize: 12, fontWeight: FontWeight.w400),
-                  ),
-                  const SizedBox(
-                    height: 6,
-                  ),
-                  Text(
-                    sortedTickets[index].theater.name,
-                    style: greyTextFont.copyWith(
-                        fontSize: 12, fontWeight: FontWeight.w400),
-                  ),
-                ],
+              const SizedBox(
+                width: 16,
               ),
-            ),
-          ],
+              SizedBox(
+                width: MediaQuery.of(context).size.width -
+                    2 * defaultMargin -
+                    70 -
+                    16,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      sortedTickets[index].movieDetail.title,
+                      style: blackTextFont.copyWith(fontSize: 18),
+                      maxLines: 2,
+                      overflow: TextOverflow.clip,
+                    ),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    Text(
+                      sortedTickets[index].movieDetail.genresAndLanguage,
+                      style: greyTextFont.copyWith(
+                          fontSize: 12, fontWeight: FontWeight.w400),
+                    ),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    Text(
+                      sortedTickets[index].theater.name,
+                      style: greyTextFont.copyWith(
+                          fontSize: 12, fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
