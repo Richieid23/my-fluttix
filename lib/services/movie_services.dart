@@ -20,9 +20,9 @@ class MovieServices {
   }
 
   static Future<MovieDetail> getDetails(Movie movie,
-      {http.Client client}) async {
+      {int movieId, http.Client client}) async {
     String url =
-        'https://api.themoviedb.org/3/movie/${movie.id}?api_key=$apiKey&language=en-US';
+        'https://api.themoviedb.org/3/movie/${movieId ?? movie.id}?api_key=$apiKey&language=en-US';
 
     client ??= http.Client();
 
@@ -47,12 +47,19 @@ class MovieServices {
         break;
     }
 
-    return MovieDetail(
-        movie: movie,
-        language: language,
-        genres: genres
-            .map((e) => (e as Map<String, dynamic>)['name'].toString())
-            .toList());
+    return movieId != null
+        ? MovieDetail(
+            movie: Movie.fromJson(data),
+            language: language,
+            genres: genres
+                .map((e) => (e as Map<String, dynamic>)['name'].toString())
+                .toList())
+        : MovieDetail(
+            movie: movie,
+            language: language,
+            genres: genres
+                .map((e) => (e as Map<String, dynamic>)['name'].toString())
+                .toList());
   }
 
   static Future<List<Credit>> getCredits(int movieId,
