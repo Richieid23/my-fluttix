@@ -39,9 +39,7 @@ class _MainPageState extends State<MainPage> {
           },
           children: const [
             MoviePage(),
-            Center(
-              child: Text('My Tickets'),
-            ),
+            TicketPage(),
           ],
         ),
         customBottomNavBar(),
