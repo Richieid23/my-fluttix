@@ -14,3 +14,20 @@ Future<String> uploadImage(File image) async {
   String downloadUrl = await taskSnapshot.ref.getDownloadURL();
   return downloadUrl;
 }
+
+Widget generateDashedDivider(double width) {
+  int n = width ~/ 5;
+  return Row(
+    children: List.generate(
+        n,
+        (index) => (index % 2 == 0)
+            ? Container(
+                height: 2,
+                width: width / n,
+                color: const Color(0xFFE4E4E4),
+              )
+            : SizedBox(
+                width: width / n,
+              )),
+  );
+}
