@@ -65,6 +65,8 @@ class Wrapper extends StatelessWidget {
           );
         } else if (pageState is OnProfilePage) {
           return ProfilePage();
+        } else if (pageState is OnTopupPage) {
+          return TopupPage(pageEvent: pageState.pageEvent);
         } else {
           return const MainPage();
         }
