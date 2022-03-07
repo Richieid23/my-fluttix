@@ -38,6 +38,8 @@ class PageBloc extends Bloc<PageEvent, PageState> {
       yield OnTicketDetailPage(event.ticket);
     } else if (event is GoToProfilePage) {
       yield OnProfilePage();
+    } else if (event is GoToTopupPage) {
+      yield OnTopupPage(event.pageEvent);
     }
   }
 }
