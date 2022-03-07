@@ -59,7 +59,7 @@ class _MainPageState extends State<MainPage> {
                     color: Colors.black.withOpacity(0.45)),
               ),
               onPressed: () {
-                context.bloc<UserBloc>().add(SignOut());
+                context.bloc<PageBloc>().add(GoToTopupPage(GoToMainPage()));
               },
             ),
           ),
